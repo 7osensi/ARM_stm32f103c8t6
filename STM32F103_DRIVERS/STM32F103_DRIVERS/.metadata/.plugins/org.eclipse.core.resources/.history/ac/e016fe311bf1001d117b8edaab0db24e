@@ -1,0 +1,56 @@
+/*
+ * Stm32F103_GPIO.h
+ *
+ *  Created on: May 12, 2023
+ *      Author: Hussein Mohamed
+ */
+
+#ifndef INC_STM32F103_GPIO_H_
+#define INC_STM32F103_GPIO_H_
+
+/*==================== #include ====================*/
+#include"stm32f103.h"
+
+/*==================== #define ====================*/
+
+
+
+/*==================== struct ====================*/
+typedef struct
+{
+	u8 GPIO_PinNumber;
+	u8 GPIO_PinMode;
+	u8 GPIO_PinSpeed;
+	u8 GPIO_PinOutInpMode;
+}GPIO_PinConfig_t;
+
+typedef struct
+{
+	GPIOx_t *pGPIOx; /* Holds The Base Address of The GPIO Port */
+	GPIO_PinConfig_t GPIO_PinConfig; /* Holds GPIO Pin Configurations Settings */
+}GPIO_Handle_t;
+
+/*************************************************************
+/                                                  			 /
+/                	 GPIO Driver APIs                        /
+/                                                            /
+/************************************************************/
+
+void MCAL_GPIO_PeripheralClkControl(GPIOx_t *pGPIOx, u8 EN_DIS);
+
+void MCAL_GPIO_Init(GPIO_Handle_t *pGPIOHandle);
+void MCAL_GPIO_DeInit(GPIOx_t *pGPIOx);
+
+u8 MCAL_GPIO_ReadInputPin(GPIOx_t *pGPIOx, u8 PinNumber);
+u16 MCAL_GPIO_ReadInputPort(GPIOx_t *pGPIOx);
+
+void MCAL_GPIO_WriteOutputPin(GPIOx_t *pGPIOx, u8 PinNumber, u8 Value);
+void MCAL_GPIO_WriteOutputPort(GPIOx_t *pGPIOx, u16 Value);
+
+void MCAL_GPIO_ToggleOutputPin(GPIOx_t *pGPIOx, u8 PinNumber);
+
+/* IRQ Configurations and ISR Handling */
+void MCAL_GPIO_IRQConfig(u8 IRQNumber, u8 IRQPriority, u8 EN_DIS);
+void MCAL_GPIO_IRQHandling(u8 PinNumber);
+
+#endif /* INC_STM32F103_GPIO_H_ */

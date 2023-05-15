@@ -1,0 +1,26 @@
+01:02:56 **** Build of configuration Debug for project BluePill_STM32F103_Drivers ****
+make -j8 all 
+arm-none-eabi-gcc -mcpu=cortex-m3 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f103c8tx.d" -MT"Startup/startup_stm32f103c8tx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f103c8tx.o" "../Startup/startup_stm32f103c8tx.s"
+arm-none-eabi-gcc "../Src/003LED_Toggle_BTN_INT.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/003LED_Toggle_BTN_INT.d" -MT"Src/003LED_Toggle_BTN_INT.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/003LED_Toggle_BTN_INT.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+arm-none-eabi-gcc "../Drivers/Src/Delay_Program.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Delay_Program.d" -MT"Drivers/Src/Delay_Program.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Delay_Program.o"
+arm-none-eabi-gcc "../Drivers/Src/RCC_prog.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/RCC_prog.d" -MT"Drivers/Src/RCC_prog.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/RCC_prog.o"
+arm-none-eabi-gcc "../Drivers/Src/Stm32F103_AFIO.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Stm32F103_AFIO.d" -MT"Drivers/Src/Stm32F103_AFIO.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Stm32F103_AFIO.o"
+arm-none-eabi-gcc "../Drivers/Src/Stm32F103_EXTI.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Stm32F103_EXTI.d" -MT"Drivers/Src/Stm32F103_EXTI.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Stm32F103_EXTI.o"
+arm-none-eabi-gcc "../Drivers/Src/Stm32F103_GPIO.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Stm32F103_GPIO.d" -MT"Drivers/Src/Stm32F103_GPIO.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Stm32F103_GPIO.o"
+arm-none-eabi-gcc "../Drivers/Src/Stm32F103_NVIC.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/stm32F103c8t6-main/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Stm32F103_NVIC.d" -MT"Drivers/Src/Stm32F103_NVIC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Stm32F103_NVIC.o"
+arm-none-eabi-gcc -o "BluePill_STM32F103_Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\0PandaKit\stm32F103c8t6-main\STM32F103_DRIVERS\BluePill_STM32F103_Drivers\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BluePill_STM32F103_Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BluePill_STM32F103_Drivers.elf
+ 
+arm-none-eabi-size   BluePill_STM32F103_Drivers.elf 
+arm-none-eabi-objdump -h -S  BluePill_STM32F103_Drivers.elf  > "BluePill_STM32F103_Drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1740	      8	   1568	   3316	    cf4	BluePill_STM32F103_Drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: BluePill_STM32F103_Drivers.list
+ 
+
+01:02:57 Build Finished. 0 errors, 0 warnings. (took 1s.239ms)
+

@@ -1,0 +1,13 @@
+2023-05-12 00:53:40,771 [INFO] Activator:176 - 
+
+
+2023-05-12 00:53:40,798 [INFO] Activator:177 - !SESSION log4j initialized
+2023-05-12 00:54:04,630 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2023-05-12 00:54:22,941 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-05-12 00:54:22,942 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-05-12 00:54:22,945 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-05-12 00:58:27,573 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_mcu.870442803.1645141231 uses a null category that is invalid in its context. The option was ignored.
+2023-05-12 00:58:27,588 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_cpuid.193783996.703420275 uses a null category that is invalid in its context. The option was ignored.
+2023-05-12 00:58:27,604 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_coreid.1159996938.1210680438 uses a null category that is invalid in its context. The option was ignored.
+2023-05-12 00:58:27,616 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.gnu.managedbuild.option.target_board.208352611.1765424388 uses a null category that is invalid in its context. The option was ignored.
+2023-05-12 00:58:27,631 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] Managed Build system manifest file error: Option com.st.stm32cube.ide.mcu.gnu.managedbuild.option.defaults.150275794.1078532254 uses a null category that is invalid in its context. The option was ignored.

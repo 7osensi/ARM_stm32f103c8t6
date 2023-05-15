@@ -1,0 +1,61 @@
+/*
+ * 003_LED_Toggle_BTN_INT.c
+ *
+ *  Created on: May 15, 2023
+ *      Author: Hussein Mohamed
+ */
+
+#include"stm32f103.h"
+#include"Stm32F103_GPIO.h"
+
+void delay()
+{
+	for(u32 i = 0; i < 500000 / 2; i++);
+}
+int main()
+{
+	/* Clock Enable */
+	/*===============================================================================*/
+	/* GPIOA Clock Enable */
+	MCAL_GPIO_PeripheralClkControl(MGPIOA, ENABLE);
+	/* GPIOB Clock Enable */
+	MCAL_GPIO_PeripheralClkControl(MGPIOB, ENABLE);
+
+	/* AFIO Clock Enable */
+	AFIO_PCLK_EN();
+
+	/*===============================================================================*/
+
+	/* LED Configuration */
+	GPIO_Handle_t GPIO_LED;
+	GPIO_LED.pGPIOx = MGPIOA;
+	GPIO_LED.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_1;
+	GPIO_LED.GPIO_PinConfig.GPIO_PinMode = OUTPUT_10MHZ_MODE;
+	GPIO_LED.GPIO_PinConfig.GPIO_PinConfiguration = GP_OUTPUT_PU_PL_MODE;
+
+	/*===============================================================================*/
+
+	/* BTN Configuration */
+	GPIO_Handle_t GPIO_BTN;
+	GPIO_BTN.pGPIOx = MGPIOB;
+	GPIO_BTN.GPIO_PinConfig.GPIO_PinNumber = GPIO_PIN_NO_0;
+	GPIO_BTN.GPIO_PinConfig.GPIO_PinMode = INPUT_MODE;
+	GPIO_BTN.GPIO_PinConfig.GPIO_PinConfiguration = RESET_MODE;
+	GPIO_BTN.GPIO_PinConfig.GPIO_EXTIStatus = ENABLE; /* Enable Interrupt */
+	GPIO_BTN.GPIO_PinConfig.GPIO_EXTIEdge = EXTI_F_EDGE; /* Falling Edge */
+
+	/*===============================================================================*/
+
+	MCAL_GPIO_Init(&GPIO_LED);
+	MCAL_GPIO_Init(&GPIO_BTN);
+
+	while(1);
+	return 0;
+}
+
+void EXTI0_IRQHandler(void)
+{
+	/* Handle The Interrupt */
+	MCAL_GPIO_IRQHandling(IRQ_NO_EXTI0); /* Pin 0 */
+	MCAL_GPIO_ToggleOutputPin(MGPIOA, GPIO_PIN_NO_1);
+}

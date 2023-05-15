@@ -1,0 +1,67 @@
+!SESSION 2023-05-16 01:00:49.030 -----------------------------------------------
+eclipse.buildId=Version 1.12.1
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-05-16 01:01:13.775
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-05-16 01:01:13.789
+!MESSAGE Log4j2 initialized with config file D:\0PandaKit\stm32F103c8t6-main\.metadata\.log4j2.xml
+
+!ENTRY org.eclipse.core.jobs 2 2 2023-05-16 01:01:22.104
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.ui.internal.Workbench$40
+!SESSION 2023-05-16 01:05:19.955 -----------------------------------------------
+eclipse.buildId=Version 1.12.1
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-05-16 01:05:29.496
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-05-16 01:05:29.499
+!MESSAGE Log4j2 initialized with config file D:\0PandaKit\STM32F103_DRIVERS\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-05-16 01:05:45.326
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-05-16 01:05:55.516
+!MESSAGE Indexed 'BluePill_STM32F103_Drivers' (9 sources, 66 headers) in 1.9 sec: 2,368 declarations; 3,730 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.033%)
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-05-16 01:06:14.256
+!MESSAGE Using unsafe http transport to retrieve http://freescale.com/lgfiles/updates/Eclipse/KDS, see CVE-2021-41033. Consider using https instead.
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-05-16 01:06:18.495
+!MESSAGE Indexed 'BluePill_STM32F103_Drivers' (9 sources, 66 headers) in 0.313 sec: 2,368 declarations; 3,730 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.033%)
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2023-05-16 01:06:19.416
+!MESSAGE Error parsing metadata repository
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2023-05-16 01:06:19.416
+!MESSAGE Error in file:/C:/ST/STM32CubeIDE_1.10.1/STM32CubeIDE/p2/org.eclipse.equinox.p2.repository/cache/content-783366767.jar at line 6767, column 45: Missing required attribute in "unit": id
+!SESSION 2023-05-16 01:07:47.570 -----------------------------------------------
+eclipse.buildId=Version 1.12.1
+java.version=11.0.17
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2023-05-16 01:08:04.969
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2023-05-16 01:08:04.976
+!MESSAGE Log4j2 initialized with config file D:\0PandaKit\STM32F103_DRIVERS\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2023-05-16 01:08:26.380
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.repository 2 0 2023-05-16 01:08:47.484
+!MESSAGE Using unsafe http transport to retrieve http://freescale.com/lgfiles/updates/Eclipse/KDS, see CVE-2021-41033. Consider using https instead.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 2 0 2023-05-16 01:08:49.528
+!MESSAGE Error parsing metadata repository
+!SUBENTRY 1 org.eclipse.equinox.p2.core 2 0 2023-05-16 01:08:49.528
+!MESSAGE Error in file:/C:/ST/STM32CubeIDE_1.10.1/STM32CubeIDE/p2/org.eclipse.equinox.p2.repository/cache/content-783366767.jar at line 6767, column 45: Missing required attribute in "unit": id

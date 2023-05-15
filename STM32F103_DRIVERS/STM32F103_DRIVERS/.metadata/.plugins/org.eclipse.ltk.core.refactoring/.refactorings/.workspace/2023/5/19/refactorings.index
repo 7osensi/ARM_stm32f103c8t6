@@ -1,0 +1,6 @@
+1683918421487	Delete resource 'BluePill_STM32F103_Drivers/Drivers/Inc/GPIO_private.h'
+1683918429972	Delete resource 'BluePill_STM32F103_Drivers/Drivers/Inc/RCC_private.h'
+1683928790410	Delete resource 'BluePill_STM32F103_Drivers/Drivers/Inc/GPIO_config.h'
+1683928793438	Delete resource 'BluePill_STM32F103_Drivers/Drivers/Inc/GPIO_interface.h'
+1683928800103	Delete resource 'BluePill_STM32F103_Drivers/Drivers/Src/GPIO_prog.c'
+1683950421234	Delete resource 'BluePill_STM32F103_Drivers/Src/main.c'

@@ -1,0 +1,4 @@
+"./Src/003LED_Toggle_BTN_INT.o"
+"./Src/syscalls.o"
+"./Src/sysmem.o"
+"./Startup/startup_stm32f103c8tx.o"

@@ -1,0 +1,19 @@
+/*
+ * 001LED_Toggle.c
+ *
+ *  Created on: May 13, 2023
+ *      Author: Hussein Mohamed
+ */
+
+#include"stm32f103.h"
+
+int main()
+{
+	GPIO_Handle_t	GPIO_BLU;
+
+	GPIO_BLU.pGPIOx = MGPIOC;
+
+
+	return 0;
+}
+

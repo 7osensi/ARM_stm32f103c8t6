@@ -1,0 +1,26 @@
+/*
+ * Stm32F103_EXTI.c
+ *
+ *  Created on: May 15, 2023
+ *      Author: Hussein Mohamed
+ */
+
+/*================================== #include ==================================*/
+/*================================== #include ==================================*/
+/*================================== #include ==================================*/
+#include"Stm32F103_EXTI.h"
+
+
+/*	Function Take The Number Of Line To Set Or Not Mask It As EXTI */
+void MCAL_EXTI_Enable(u8 u8LineNumber)
+{
+	MEXTI->IMR |= (1 << u8LineNumber);
+}
+
+/*	Function Take The Number Of Line To Disable Or Mask It As EXTI */
+void MCAL_EXTI_Disable(u8 Copy_u8LineNum)
+{
+	MEXTI->IMR &= ~(1 << u8LineNumber);
+
+}
+

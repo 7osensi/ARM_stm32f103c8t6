@@ -1,0 +1,36 @@
+/*
+ * Stm32F103_AFIO.c
+ *
+ *  Created on: May 15, 2023
+ *      Author: Hussein Mohamed
+ */
+
+/*================================== #include ==================================*/
+/*================================== #include ==================================*/
+/*================================== #include ==================================*/
+#include"Stm32F103_AFIO.h"
+
+/* Function To Select Pin From Line Or Select Port From Line*/
+void MCAL_EXTI_SelectPort(u8 u8LineNumber, u8 u8PortID)
+{
+	if(u8LineNumber <= 3)
+	{
+
+	}
+	else if(u8LineNumber <= 7)
+	{
+
+	}
+	else if(u8LineNumber <= 11)
+	{
+
+	}
+	else if(u8LineNumber <= 15)
+	{
+
+	}
+	else
+	{
+		/* Do Nothing */
+	}
+}

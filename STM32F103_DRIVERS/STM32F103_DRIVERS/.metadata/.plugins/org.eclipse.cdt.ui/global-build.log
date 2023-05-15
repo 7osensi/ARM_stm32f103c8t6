@@ -1,0 +1,25 @@
+00:44:49 **** Incremental Build of configuration Debug for project BluePill_STM32F103_Drivers ****
+make -j8 all 
+arm-none-eabi-gcc "../Src/003LED_Toggle_BTN_INT.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/003LED_Toggle_BTN_INT.d" -MT"Src/003LED_Toggle_BTN_INT.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/003LED_Toggle_BTN_INT.o"
+arm-none-eabi-gcc "../Drivers/Src/Stm32F103_GPIO.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Stm32F103_GPIO.d" -MT"Drivers/Src/Stm32F103_GPIO.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Stm32F103_GPIO.o"
+arm-none-eabi-gcc "../Drivers/Src/Stm32F103_NVIC.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Stm32F103_NVIC.d" -MT"Drivers/Src/Stm32F103_NVIC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Stm32F103_NVIC.o"
+../Drivers/Src/Stm32F103_NVIC.c:20:32: error: unknown type name 'u8'
+   20 | void MCAL_NVIC_EnableInterrupt(u8 IRQNumber)
+      |                                ^~
+make: *** [Drivers/Src/subdir.mk:34: Drivers/Src/Stm32F103_NVIC.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+00:45:28 **** Incremental Build of configuration Debug for project BluePill_STM32F103_Drivers ****
+make -j8 all 
+arm-none-eabi-gcc "../Drivers/Src/Stm32F103_NVIC.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F1 -DSTM32F103C8Tx -c -I../Inc -I"D:/0PandaKit/STM32F103_DRIVERS/BluePill_STM32F103_Drivers/Drivers/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Drivers/Src/Stm32F103_NVIC.d" -MT"Drivers/Src/Stm32F103_NVIC.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Drivers/Src/Stm32F103_NVIC.o"
+arm-none-eabi-gcc -o "BluePill_STM32F103_Drivers.elf" @"objects.list"   -mcpu=cortex-m3 -T"D:\0PandaKit\STM32F103_DRIVERS\BluePill_STM32F103_Drivers\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BluePill_STM32F103_Drivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BluePill_STM32F103_Drivers.elf
+ 
+arm-none-eabi-size   BluePill_STM32F103_Drivers.elf 
+arm-none-eabi-objdump -h -S  BluePill_STM32F103_Drivers.elf  > "BluePill_STM32F103_Drivers.list"
+   text	   data	    bss	    dec	    hex	filename
+   1740	      8	   1568	   3316	    cf4	BluePill_STM32F103_Drivers.elf
+Finished building: default.size.stdout
+ 
+Finished building: BluePill_STM32F103_Drivers.list
+ 

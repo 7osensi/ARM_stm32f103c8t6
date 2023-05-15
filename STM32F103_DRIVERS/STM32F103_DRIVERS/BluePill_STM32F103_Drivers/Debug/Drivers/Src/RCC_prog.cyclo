@@ -1,0 +1,7 @@
+RCC_prog.c:31:6:MRCC_vEnableClock	5
+RCC_prog.c:52:6:MRCC_vDisableClock	5
+RCC_prog.c:69:6:MRCC_vEnableSecuritySystem	1
+RCC_prog.c:80:6:MRCC_vDisableSecuritySystem	1
+RCC_prog.c:94:13:MRCC_vInitSystemCLK	1
+RCC_prog.c:191:7:MRCC_vOutMCO_1	5
+RCC_prog.c:224:6:MRCC_vOutMCO_1Pre	6

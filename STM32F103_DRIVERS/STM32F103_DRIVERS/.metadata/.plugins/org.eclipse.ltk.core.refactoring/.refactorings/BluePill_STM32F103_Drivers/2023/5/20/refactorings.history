@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;BluePill_STM32F103_Drivers/Src/003_LED_Toggle_BTN_INT.c&apos; to &apos;003LED_Toggle_BTN_INT.c&apos;" description="Rename resource &apos;003_LED_Toggle_BTN_INT.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Src/003_LED_Toggle_BTN_INT.c" name="003LED_Toggle_BTN_INT.c" stamp="1684143817280" updateReferences="true"/>
+</session>

@@ -1,0 +1,193 @@
+/*======================================================================================
+===========================   - GPIO				         ===========================
+===========================   - GPIO_interface.h			 ===========================
+===========================   - Created: 24/2/2022			 ===========================
+===========================   - Author: Hussein Mohamed      ===========================
+===========================   - Version : _1_				 ===========================
+===========================   - Note :
+									  *-
+									  *-
+========================================================================================*/
+
+#ifndef _GPIO_INTERFACE_H
+#define _GPIO_INTERFACE_H
+
+/*===========  INCLUDE LIB   ===========*/
+#include <Std_Types.h>
+#include "BIT_MATH.h"
+/*======================================*/
+/*===========  INCLUDE MCAL  ===========*/
+#include "stm32f103.h"
+#include "GPIO_config.h"
+/*======================================*/
+
+/*======== Macros Of Port ========*/
+#define _GPIOA_PORT   		      ( 0U )                  /* GPIO (A) PORT      						    */
+#define _GPIOB_PORT   		      ( 1U )                  /* GPIO (B) PORT      						    */
+#define _GPIOC_PORT   		      ( 2U )                  /* GPIO (C) PORT      						    */
+
+/*======== Macros Of Pins ========*/
+#define GPIO_PIN_0                  ( ( u16 ) 0U  )       /* Pin 0 selected    					            */
+#define GPIO_PIN_1                  ( ( u16 ) 1U  )       /* Pin 1 selected    					            */
+#define GPIO_PIN_2                  ( ( u16 ) 2U  )       /* Pin 2 selected    					            */
+#define GPIO_PIN_3                  ( ( u16 ) 3U  )       /* Pin 3 selected    					            */
+#define GPIO_PIN_4                  ( ( u16 ) 4U  )       /* Pin 4 selected    					            */
+#define GPIO_PIN_5                  ( ( u16 ) 5U  )       /* Pin 5 selected    					            */
+#define GPIO_PIN_6                  ( ( u16 ) 6U  )       /* Pin 6 selected    					            */
+#define GPIO_PIN_7                  ( ( u16 ) 7U  )       /* Pin 7 selected    					            */
+#define GPIO_PIN_8                  ( ( u16 ) 8U  )       /* Pin 8 selected    					            */
+#define GPIO_PIN_9                  ( ( u16 ) 9U  )       /* Pin 9 selected    					            */
+#define GPIO_PIN_10                 ( ( u16 ) 10U )       /* Pin 10 selected   					            */
+#define GPIO_PIN_11                 ( ( u16 ) 11U )       /* Pin 11 selected   					            */
+#define GPIO_PIN_12                 ( ( u16 ) 12U )       /* Pin 12 selected   					            */
+#define GPIO_PIN_13                 ( ( u16 ) 13U )       /* Pin 13 selected   					            */
+#define GPIO_PIN_14                 ( ( u16 ) 14U )       /* Pin 14 selected   					            */
+#define GPIO_PIN_15                 ( ( u16 ) 15U )       /* Pin 15 selected   					            */
+
+
+/*================ Macros Of Mode ================*/
+#define _MODE_INPUT      	        ( 0b00 )              /* MODE ---> INPUT     							*/
+#define _MODE_OUTPUT     	        ( 0b01 )              /* MODE ---> OUTPUT @ Speed 10MHz   				*/
+
+/*
+00: Analog mode
+01: Floating input (reset state)
+10: Input with pull-up / pull-down
+*/
+/*=============== Macros Of Input ================*/
+#define _MODE_ANALOG     	        ( 0b00 )            /* MODE ---> ANALOG    								*/
+#define _MODE_FLOATING     	        ( 0b01 )            /* MODE ---> FLOATING    							*/
+#define _MODE_IN_PU_PD     	        ( 0b10 )            /* MODE ---> INPUT PULL UP / PULL DOWN 				*/
+
+/*
+00: General purpose output push-pull
+01: General purpose output Open-drain
+10: Alternate function output Push-pull
+11: Alternate function output Open-drain
+*/
+/*=============== Macros Of Output ===============*/
+#define _MODE_GP_OUT_PUSH_PULL		( 0b00 )          /* MODE ---> OUTPUT PUSH PULL      					*/
+#define _MODE_GP_OUT_OPEN_DR     	( 0b01 )          /* MODE ---> OUTPUT OPEN DRAIN    					*/
+#define _MODE_GP_OUT_ALT_PUSH_PULL  ( 0b10 )          /* MODE ---> OUTPUT ALTERNATE FUNCTION PUSH PULL   	*/
+#define _MODE_GP_OUT_ALT_OPEN_DR    ( 0b11 )          /* MODE ---> OUTPUT ALTERNATE FUNCTION OPEN DRAIN     */
+
+/*================ ENUM For PORT  ================*/
+typedef enum{
+	GPIOA_PORT = 0U,                                  /* GPIO (A) PORT 										*/
+	GPIOB_PORT,                                		  /* GPIO (B) PORT 										*/
+	GPIOC_PORT,                                		  /* GPIO (C) PORT 						     			*/
+}port_t;
+
+/*================================     API Prototypes     ================================*/
+
+/*
+*  Name 		   : MGIO_vResetCR
+*
+*  Description	   : API to Reset CR Register ( Reset value : 0x44444444 )
+*
+*  Copy_u8PortName : _GPIOA_PORT || _GPIOB_PORT || _GPIOC_PORT
+*/
+extern void MGIO_vResetCR(u8 Copy_u8PortName);
+
+/*
+*   Name 			: MGPIO_vSetPinMode
+*
+*   Description	    : API To Set Pin Mode
+*
+*   Sync/Async      :
+*
+*   Reentrancy		:
+*
+*   Copy_u8PortName : _GPIOA_PORT || _GPIOB_PORT || _GPIOC_PORT
+*
+* 	Copy_u8PinNum   : GPIO_PIN_0  || GPIO_PIN_1  || GPIO_PIN_2  || GPIO_PIN_3  || GPIO_PIN_4
+* 					  GPIO_PIN_5  || GPIO_PIN_6  || GPIO_PIN_7  || GPIO_PIN_8  || GPIO_PIN_9
+* 					  GPIO_PIN_10 || GPIO_PIN_11 || GPIO_PIN_12 || GPIO_PIN_13 || GPIO_PIN_14
+*
+* 	Copy_u8Mode     : _MODE_INPUT || _MODE_OUTPUT
+*
+*	Copy_u8Config   : INPUT  :  _MODE_ANALOG || _MODE_FLOATING || _MODE_IN_PU_PD
+*					  OUTPUT :  _MODE_GP_OUT_PUSH_PULL || _MODE_GP_OUT_OPEN_DR ||
+*						        _MODE_GP_OUT_ALT_PUSH_PULL || _MODE_GP_OUT_ALT_OPEN_DR
+*/
+extern void MGPIO_vSetPinMode(u8 Copy_u8PortName ,u8 Copy_u8PinNum ,u8 Copy_u8Mode, u8 Copy_u8Config);
+
+/*
+*   Name 			: MGPIO_u8ReadData
+*
+*   Description	    : Function To Read Data From IDR
+*
+*   Sync/Async      : Async
+*
+*   Reentrancy		:
+*
+*   Copy_u8PortName : _GPIOA_PORT || _GPIOB_PORT || _GPIOC_PORT
+*
+* 	Copy_u8PinNum   : GPIO_PIN_0  || GPIO_PIN_1  || GPIO_PIN_2  || GPIO_PIN_3  || GPIO_PIN_4
+* 					  GPIO_PIN_5  || GPIO_PIN_6  || GPIO_PIN_7  || GPIO_PIN_8  || GPIO_PIN_9
+* 					  GPIO_PIN_10 || GPIO_PIN_11 || GPIO_PIN_12 || GPIO_PIN_13 || GPIO_PIN_14
+*
+*/
+extern u8 MGPIO_u8ReadData(u8 copy_u8PORT ,u8 copy_u8PIN);
+
+/*
+*   Name 			: MGPIO_vWriteData
+*
+*   Description     : API To Write Data to ODR Register
+*
+*   Sync/Async      : Async
+*
+*   Reentrancy		:
+*
+*   Copy_u8PortName : _GPIOA_PORT || _GPIOB_PORT || _GPIOC_PORT
+*
+* 	Copy_u8PinNum   : GPIO_PIN_0  || GPIO_PIN_1  || GPIO_PIN_2  || GPIO_PIN_3  || GPIO_PIN_4
+* 					  GPIO_PIN_5  || GPIO_PIN_6  || GPIO_PIN_7  || GPIO_PIN_8  || GPIO_PIN_9
+* 					  GPIO_PIN_10 || GPIO_PIN_11 || GPIO_PIN_12 || GPIO_PIN_13 || GPIO_PIN_14
+*
+* 	Copy_u8State     : _LOW  || _HIGH
+*
+*/
+extern void MGPIO_vWriteData(u8 Copy_u32PortName ,u8 Copy_u8PinNum ,u8 Copy_u8State);
+
+/*
+*   Name 			: MGPIO_vWriteDataDIR
+*
+*   Description     : API To Set or Reset Pin using BSRR Register
+*
+*   Sync/Async      : Async
+*
+*   Reentrancy		:
+*
+*   Copy_u8PortName : _GPIOA_PORT || _GPIOB_PORT || _GPIOC_PORT
+*
+* 	Copy_u8PinNum   : GPIO_PIN_0  || GPIO_PIN_1  || GPIO_PIN_2  || GPIO_PIN_3  || GPIO_PIN_4
+* 					  GPIO_PIN_5  || GPIO_PIN_6  || GPIO_PIN_7  || GPIO_PIN_8  || GPIO_PIN_9
+* 					  GPIO_PIN_10 || GPIO_PIN_11 || GPIO_PIN_12 || GPIO_PIN_13 || GPIO_PIN_14
+*
+* 	Copy_u8State     : _LOW || _HIGH
+*
+*   Description : Function To Set or Reset Pin using BSRR Directly
+*/
+extern void MGPIO_vWriteDataDIR(u8 Copy_u8PortName ,u8 Copy_u8PinNum ,u8 Copy_u8State);
+
+/*
+*   Name 			: MGPIO_vPortOutputOneByte
+*
+*   Description     : API To Set or Reset One Byte
+*
+*   Sync/Async      : Async
+*
+*   Reentrancy		:
+*
+*   Copy_u8PortName : _GPIOA_PORT || _GPIOB_PORT || _GPIOC_PORT
+*
+*   Copy_u8Data     : _LOW || _HIGH
+*
+* 	Copy_u8StartBit : GPIO_PIN_0  || GPIO_PIN_1  || GPIO_PIN_2  || GPIO_PIN_3  || GPIO_PIN_4
+* 					  GPIO_PIN_5  || GPIO_PIN_6  || GPIO_PIN_7  || GPIO_PIN_8
+*
+*/
+extern void MGPIO_vPortOutputByte(port_t Copy_u8PortName, u32 Copy_u32Data, u8 Copy_u8StartBit, u8 Copy_u8EndBit);
+
+#endif /* _GPIO_INTERFACE_H */

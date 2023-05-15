@@ -1,0 +1,55 @@
+/*
+ * Stm32F103_EXTI.h
+ *
+ *  Created on: May 15, 2023
+ *      Author: Hussein Mohamed
+ */
+
+#ifndef INC_STM32F103_EXTI_H_
+#define INC_STM32F103_EXTI_H_
+
+/*================================== #include ==================================*/
+/*================================== #include ==================================*/
+/*================================== #include ==================================*/
+#include"stm32f103.h"
+
+/*================================== #define  ==================================*/
+/*================================== #define  ==================================*/
+/*================================== #define  ==================================*/
+
+/*
+ * IRQ(Interrupt Request) Numbers of STM32F446x MCU
+ * This is Specific for Stm32F103 Medium Density Boards
+ */
+#define IRQ_NO_WWDG                 0   /* Window Watchdog interrupt                                            */
+#define IRQ_NO_PVD                  1   /* PVD through EXTI line detection interrupt                            */
+#define IRQ_NO_TAMPER               2   /* Tamper and Time stamp interrupts through EXTI line                   */
+#define IRQ_NO_RTC                  3   /* RTC Wakeup interrupt through EXTI line                               */
+#define IRQ_NO_FLASH                4   /* Flash global interrupt                                               */
+#define IRQ_NO_RCC                  5   /* RCC global interrupt                                                 */
+#define IRQ_NO_EXTI0                6   /* EXTI Line0 interrupt                                                 */
+#define IRQ_NO_EXTI1                7   /* EXTI Line1 interrupt                                                 */
+#define IRQ_NO_EXTI2                8   /* EXTI Line2 interrupt                                                 */
+#define IRQ_NO_EXTI3                9   /* EXTI Line3 interrupt                                                 */
+#define IRQ_NO_EXTI4                10  /* EXTI Line4 interrupt                                                 */
+
+/*==================================   APIs   ==================================*/
+/*==================================   APIs   ==================================*/
+/*==================================   APIs   ==================================*/
+
+/*	Function Take The Number Of Line To Set Or Not Mask It As EXTI */
+void MCAL_EXTI_Enable(u8 Copy_u8LineNum);
+
+/*	Function Take The Number Of Line To Disable Or Mask It As EXTI */
+void MCAL_EXTI_Disable(u8 Copy_u8LineNum);
+
+/* Function to Set Trigger on Rising Or Falling */
+void MCAL_EXTI_INTEdgeType(u8 Copy_u8LineNum  , u8 Copy_u8Event) ;
+
+/* Function To Make Fake Trigger  */
+void MCAL_EXTI_voidSWTrigger( u8 Copy_u8LineNum  ) ;
+
+/* Function To Select Pin From Line Or Select Port From Line*/
+void MCALEXTI_voidSelectPort(  u8 Copy_u8LineNum  , u8 Copy_u8PortID  ) ;
+
+#endif /* INC_STM32F103_EXTI_H_ */

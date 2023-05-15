@@ -1,0 +1,336 @@
+/*
+ * Stm32F103_GPIO.c
+ *
+ *  Created on: May 12, 2023
+ *      Author: Hussein Mohamed
+ */
+
+/*================================== #include ==================================*/
+#include"stm32f103.h"
+#include"Stm32F103_GPIO.h"
+
+/*
+ * Peripheral Clock setup
+ */
+
+/*****************************************************************
+ * @fn          - MCAL_GPIO_PeripheralClkControl
+ *
+ * @brief       - This function enables or disables peripheral
+ *                clock for the given GPIO port
+ *
+ * @param[in]   - Base address of the GPIO peripheral
+ * @param[in]   - Macros: ENABLE or DISABLE
+ *
+ * @return      - None
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void MCAL_GPIO_PeripheralClkControl(GPIOx_t *pGPIOx, u8 EN_DIS)
+{
+	if(EN_DIS == ENABLE)
+	{
+		if(pGPIOx == MGPIOA)
+		{
+			GPIOA_PCLK_EN();
+
+		}
+		else if (pGPIOx == MGPIOB)
+		{
+			GPIOB_PCLK_EN();
+		}
+		else if (pGPIOx == MGPIOC)
+		{
+			GPIOC_PCLK_EN();
+		}
+	}
+	else
+	{
+		if(pGPIOx == MGPIOA)
+		{
+			GPIOA_PCLK_DIS();
+
+		}
+		else if (pGPIOx == MGPIOB)
+		{
+			GPIOB_PCLK_DIS();
+		}
+		else if (pGPIOx == MGPIOC)
+		{
+			GPIOC_PCLK_DIS();
+		}
+	}
+}
+
+/*
+ * Init and De-Init
+ */
+/*****************************************************************
+ * @fn          - MCAL_GPIO_Init
+ *
+ * @brief       - This function initialize GPIO peripherals
+ *
+ * @param[in]   - Pointer to GPIO Handle structure
+ *
+ * @return      - None
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void MCAL_GPIO_Init(GPIO_Handle_t *pGPIOHandle)
+{
+
+	u32 TempReg = 0;
+
+	if (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber <= 7) /* CRL : CR[0] : Pins 0 : 7 */
+	{
+		/* 1. Configure The Mode of The GPIO Pin */
+
+		TempReg = ( (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode) << ( (4 * (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) ) ) );
+
+		pGPIOHandle->pGPIOx->CR[0]  &= ~(0x3 << (4 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); /* Clearing Pins */
+
+
+		pGPIOHandle->pGPIOx->CR[0] |= TempReg;
+
+		TempReg = 0;
+
+		/* 2. Configure The Configuration of The GPIO Pin */
+
+		TempReg = ( (pGPIOHandle->GPIO_PinConfig.GPIO_PinConfiguration) << ( (4 * (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) ) + 2) );
+
+		pGPIOHandle->pGPIOx->CR[0]  &= ~(0x3 << ( (4 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) + 2) ); /* Clearing Pins */
+
+		pGPIOHandle->pGPIOx->CR[0] |= TempReg;
+
+		TempReg = 0;
+	}
+	else if (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber >= 8) /* CRH : CR[1] : Pins 8 : 15 */
+	{
+		/* 1. Configure The Mode of The GPIO Pin */
+
+		TempReg = ( (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode) << ( (4 * (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) - 32) ) );
+
+		pGPIOHandle->pGPIOx->CR[1]  &= ~(0x3 << ( (4 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) - 32) ); /* Clearing Pins */
+
+		pGPIOHandle->pGPIOx->CR[1] |= TempReg;
+
+		TempReg = 0;
+
+		/* 2. Configure The Configuration of The GPIO Pin */
+
+		TempReg = ( (pGPIOHandle->GPIO_PinConfig.GPIO_PinConfiguration) << ( ( (4 * (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) ) + 2) - 32) );
+
+		pGPIOHandle->pGPIOx->CR[1]  &= ~(0x3 << ( ( (4 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber) + 2) - 32) ); /* Clearing Pins */
+
+		pGPIOHandle->pGPIOx->CR[1] |= TempReg;
+
+		TempReg = 0;
+	}
+
+	/* Hardware interrupt selection */
+
+	if(pGPIOHandle->GPIO_PinConfig.GPIO_EXTIStatus == EXTI_ENABLE)
+	{
+		/* 1. Configure the mask bits of the 20 Interrupt lines (EXTI_IMR) */
+		MEXTI->IMR |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+
+		/* 2. Configure the Trigger Selection bits of the Interrupt lines (EXTI_RTSR and EXTI_FTSR) */
+		/* Rising Edge Trigger Selection */
+		if(pGPIOHandle->GPIO_PinConfig.GPIO_EXTIEdge == EXTI_R_EDGE)
+		{
+			MEXTI->RTSR |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+
+			/* Clear The FTSR Corresponding Pin */
+			MEXTI->FTSR &= ~(1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+		}
+
+		/* Falling Edge Trigger Selection */
+		else
+		{
+			MEXTI->FTSR |= (1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+
+			/* Clear The RTSR Corresponding Pin */
+			MEXTI->RTSR &= ~(1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+		}
+		 /* 3. Configure the enable and mask bits that control the NVIC IRQ channel mapped to the External
+		 	   Interrupt Controller (EXTI) so that an interrupt coming from one of the 20 lines
+		 	   can be correctly acknowledged */
+//		if (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber <= 31 )
+//		{
+//
+//		}
+		NVIC_ISER0 |= (1 << 6); /* EXTI Line0 Interrupt is in Position 6 in IVT */
+
+		MAFIO->EXTICR1 |= (1 << 0); /* 0001: PB[x] pin */
+	}
+}
+/*****************************************************************
+ * @fn          - MCAL_GPIO_DeInit
+ *
+ * @brief       - This function de-initialize GPIO peripherals
+ *
+ * @param[in]   - Base address of the GPIO peripheral
+ *
+ * @return      - None
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void MCAL_GPIO_DeInit(GPIOx_t *pGPIOx)
+{
+	if(pGPIOx == MGPIOA)
+	{
+		GPIOA_REG_RESET();
+
+	}
+	else if (pGPIOx == MGPIOB)
+	{
+		GPIOB_REG_RESET();
+	}
+	else if (pGPIOx == MGPIOC)
+	{
+		GPIOC_REG_RESET();
+	}
+}
+
+/*
+ * Data read and write
+ */
+/*****************************************************************
+ * @fn          - MCAL_GPIO_ReadFromInputPin
+ *
+ * @brief       - This function reads value of input pin, on
+ *                a specific port
+ *
+ * @param[in]   - Base address of the GPIO peripheral
+ * @param[in]   - Pin number
+ *
+ * @return      - Content of the input data
+ *
+ * @Note        - 0 or 1
+ *
+ *****************************************************************/
+u8 MCAL_GPIO_ReadInputPin(GPIOx_t *pGPIOx, u8 u8PinNumber)
+{
+	u8 Value = 0;
+
+	Value = (u8)((pGPIOx->IDR >> u8PinNumber) & 0x00000001);
+
+	return Value;
+}
+
+/*****************************************************************
+ * @fn          - MCAL_GPIO_ReadFromInputPort
+ *
+ * @brief       - This function reads value of input port
+ *
+ * @param[in]   - Base address of the GPIO peripheral
+ *
+ * @return      - Content of the input data
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+u16 MCAL_GPIO_ReadInputPort(GPIOx_t *pGPIOx)
+{
+	u16 Value = 0;
+
+	Value = (u16)(pGPIOx->IDR);
+
+	return Value;
+}
+
+/*****************************************************************
+ * @fn          - MCAL_GPIO_WriteToOutputPin
+ *
+ * @brief       - This function writes value on a specific
+ *                output pin
+ *
+ * @param[in]   - Base address of the GPIO peripheral
+ * @param[in]   - Pin number
+ * @param[in]   - Value (Set/Reset Macro)
+ *
+ * @return      - None
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void MCAL_GPIO_WriteOutputPin(GPIOx_t *pGPIOx, u8 u8PinNumber, u8 u8Value)
+{
+	if(u8Value == GPIO_PIN_SET)
+	{
+		pGPIOx->BSRR = (1 << u8PinNumber);
+
+	}
+	else if (u8Value == GPIO_PIN_RESET)
+	{
+		pGPIOx->BSRR = (1 << (u8PinNumber + 16) );
+	}
+}
+
+/*****************************************************************
+ * @fn          - MCAL_GPIO_WriteToOutputPort
+ *
+ * @brief       - This function writes value on a specific
+ *                output port
+ *
+ * @param[in]   - Base address of the GPIO peripheral
+ * @param[in]   - Value (Set/Reset Macro)
+ *
+ * @return      - None
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void MCAL_GPIO_WriteOutputPort(GPIOx_t *pGPIOx, u16 u16Value)
+{
+	pGPIOx->BSRR = u16Value;
+}
+
+/*****************************************************************
+ * @fn          - MCAL_GPIO_ToggleOutputPin
+ *
+ * @brief       - This function toggles specific output pin
+ *
+ * @param[in]   - Base address of the GPIO peripheral
+ * @param[in]   - Pin number
+ *
+ * @return      - None
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void MCAL_GPIO_ToggleOutputPin(GPIOx_t *pGPIOx, u8 u8PinNumber)
+{
+	pGPIOx->ODR ^= (1 << u8PinNumber);
+}
+
+/* IRQ Configurations and ISR Handling */
+
+/*****************************************************************
+ * @fn          - GPIO_IRQConfig
+ *
+ * @brief       - This function configures interrupt
+ *
+ * @param[in]   - IRQ Interrupt number
+ * @param[in]   - Macro: Enable/Disable
+ *
+ * @return      - None
+ *
+ * @Note        - None
+ *
+ *****************************************************************/
+void MCAL_GPIO_IRQConfig(u8 u8IRQNumber, u8 u8IRQPriority, u8 u8EN_DIS) /* Configuration of NVIC Registers */
+{
+
+}
+void MCAL_GPIO_IRQHandling(u8 u8PinNumber)
+{
+	/* Clear Pending Register Bit */
+	if(MEXTI->PR & (1 << u8PinNumber) )
+	{
+		MEXTI->PR |= (1 << u8PinNumber);
+	}
+}

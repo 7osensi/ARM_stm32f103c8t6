@@ -1,0 +1,36 @@
+2023-05-13 05:14:48,593 [INFO] Activator:176 - 
+
+
+2023-05-13 05:14:48,602 [INFO] Activator:177 - !SESSION log4j initialized
+2023-05-13 05:14:57,434 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2023-05-13 05:15:16,526 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-05-13 05:15:16,526 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-05-13 05:15:16,528 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-05-13 06:12:42,064 [INFO] Activator:176 - 
+
+
+2023-05-13 06:12:42,067 [INFO] Activator:177 - !SESSION log4j initialized
+2023-05-13 06:12:50,373 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2023-05-13 06:13:09,265 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2023-05-13 06:13:09,266 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: Defaulting to no-operation (NOP) logger implementation
+2023-05-13 06:13:09,267 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2023-05-13 06:18:55,622 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 15:29:28,461 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2023-05-13 15:31:40,650 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: connect timed out
+2023-05-13 15:47:58,832 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: connect timed out
+2023-05-13 16:14:08,143 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-05-13 16:14:08,146 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-05-13 16:14:08,148 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-05-13 16:14:08,177 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-05-13 16:14:08,178 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-05-13 16:14:08,178 [ERROR] ConfigurationRetriever:142 - IOException on connection: sw-center.st.com
+2023-05-13 16:18:12,263 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 16:18:15,973 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: connect timed out
+2023-05-13 16:18:22,651 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 16:18:43,385 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 16:18:48,917 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 16:53:38,939 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 16:53:40,951 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 16:53:43,552 [ERROR] ConfigurationRetriever:142 - IOException on connection: Read timed out
+2023-05-13 18:07:57,277 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
+2023-05-13 18:08:15,278 [ERROR] ConfigurationRetriever:142 - IOException on connection: connect timed out
